@@ -1,4 +1,4 @@
-package com.agibank.dogapi;
+package com.agibank;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -20,16 +20,12 @@ import org.junit.jupiter.api.Test;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
-public class DogApiTests {
-
-	@BeforeAll
-	public static void setup() {
-		RestAssured.baseURI = "https://dog.ceo/api";
-	}
+public class DogApiTests extends BaseTest {
 
 	@Test
 	public void testRandomImage() {
 		given()
+		.spec(requestSpec)
 		.when().get("/breeds/image/random")
 		.then().statusCode(200)
 	    .time(lessThan(3000L))
@@ -42,6 +38,7 @@ public class DogApiTests {
 	public void testListAllBreeds() {
 		Response response = RestAssured
 				.given()
+				.spec(requestSpec)
 				.when().get("/breeds/list/all")
 				.then()
 				.statusCode(200)
@@ -71,6 +68,7 @@ public class DogApiTests {
 		
 		Response response = RestAssured
 		.given()
+		.spec(requestSpec)
 		.when().get("/breed/" + breed + "/images")
 		.then()
 		.statusCode(200)
@@ -103,6 +101,7 @@ public class DogApiTests {
 		
 		Response response = RestAssured
 		.given()
+		.spec(requestSpec)
 		.when().get("/breed/" + breed + "/images")
 		.then()
 		.statusCode(404)

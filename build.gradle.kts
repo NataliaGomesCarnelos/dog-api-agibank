@@ -21,6 +21,7 @@ dependencies {
     testImplementation("io.rest-assured:xml-path:5.3.0")
     testImplementation("io.qameta.allure:allure-rest-assured:2.18.1")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testImplementation("io.rest-assured:json-schema-validator:5.3.0")
 }
 
 tasks.test {
