@@ -21,7 +21,6 @@ public class BaseTest {
 
         requestSpec = new RequestSpecBuilder()
                 .setBaseUri(RestAssured.baseURI)
-                .setContentType("application/json")
                 .build();
         
         responseSpec = new ResponseSpecBuilder()
